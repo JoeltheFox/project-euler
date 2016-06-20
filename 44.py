@@ -24,6 +24,7 @@ answer = 0
 i=4
 y=4
 last = 12
+Upper_bound = 6000000
 
 while (True):   # This first loop generates the list and set of pentagonals
     pentagonals.append(int(i*(3*i-1)/2))
@@ -33,14 +34,14 @@ while (True):   # This first loop generates the list and set of pentagonals
         pentset.add(last)
         y+=1
         
-    if pentagonals[-1]-pentagonals[-2] > 6000000:
+    if pentagonals[-1]-pentagonals[-2] > Upper_bound:
         break
     
     i+=1
 
 for j in range(len(pentagonals)-1):   # This loop checks all pairs with difference <6,000,000 and saves candidate answers
     k=j+1
-    while(pentagonals[k]-pentagonals[j]<6000000):
+    while(pentagonals[k]-pentagonals[j]< Upper_bound):
         if int(pentagonals[k]-pentagonals[j]) in pentset and int(pentagonals[k]+pentagonals[j]) in pentset and (answer==0 or (pentagonals[k]-pentagonals[j])<answer):
             answer = int(pentagonals[k]-pentagonals[j])
         if k ==len(pentagonals)-1:
